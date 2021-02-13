@@ -21,6 +21,10 @@ public class Main {
         System.out.println();
         test.testOurArrayList(arrayListOurVersion,test_amount);
 
+        linkedListTwoWay.addFirst(13);
+        linkedListTwoWay.addFirst(13);
+        System.out.println(linkedListTwoWay.findSum());
+
     }
     public static void testTwoWayList() throws Exception {
         String nameOfCollection = "Двухсвязного списка ";

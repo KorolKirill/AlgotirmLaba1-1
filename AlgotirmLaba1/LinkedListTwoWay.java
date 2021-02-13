@@ -5,6 +5,25 @@ public class LinkedListTwoWay<E> implements MegaInterface{
     NodeTwoWay firstNode;
     int size = -1;
 
+    public int findSum() {
+        if (firstNode == lastNode) {
+            return (int) firstNode.getData();
+        }
+        else if (firstNode == null) {
+            return 0;
+        }
+
+        int result = 0;
+        NodeTwoWay temp = firstNode;
+
+        while (temp!=lastNode) {
+            result += (int) temp.getData();
+            temp = temp.getNextNode();
+        }
+        result += (int) temp.getData();
+        return result;
+    }
+
     boolean isEmpty() {
         if (firstNode == null) {
             return true;
@@ -26,7 +45,7 @@ public class LinkedListTwoWay<E> implements MegaInterface{
         }
         NodeTwoWay tempNode = findNodeByIndex(index-1);
         tempNode.setNextNode(tempNode.getNextNode().getNextNode()); // Записываем след. вершину
-        tempNode.getNextNode().getNextNode().setPrevNote(tempNode); // записываем прошлую вершину
+        tempNode.getNextNode().setPrevNote(tempNode); // записываем прошлую вершину
         size--;
     }
     public void remove(E data) throws Exception {
@@ -92,6 +111,7 @@ public class LinkedListTwoWay<E> implements MegaInterface{
         else {
             NodeTwoWay newFirstNode = new NodeTwoWay(data);
             newFirstNode.setNextNode(firstNode);
+            firstNode.setPrevNote(newFirstNode);
             firstNode = newFirstNode;
         }
         size++;

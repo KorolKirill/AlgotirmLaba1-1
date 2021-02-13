@@ -5,6 +5,25 @@ public class LinkListOneWay <E> implements MegaInterface<E> {
      NodeOneWay firstNode;
      NodeOneWay lastNode;
 
+     public int findSum() {
+         if (firstNode == lastNode) {
+             return (int) firstNode.getData();
+         }
+         else if (firstNode == null) {
+             return 0;
+         }
+
+         int result = 0;
+         NodeOneWay temp = firstNode;
+
+         while (temp!=lastNode) {
+             result += (int) temp.getData();
+             temp = temp.getNextNode();
+         }
+         result += (int) temp.getData();
+         return result;
+     }
+
     public void addFirst (E data) {
         if (isEmpty()) {
             firstNode = new NodeOneWay(data);
@@ -31,7 +50,7 @@ public class LinkListOneWay <E> implements MegaInterface<E> {
     }
 
     boolean isEmpty() {
-        if (firstNode == null) {
+        if (firstNode == null || size==-1) {
             return true;
         }
         else {
